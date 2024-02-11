@@ -1,19 +1,34 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/view_model/controller/home_controller.dart';
 import '../../../res/constants.dart';
 import '../../../view_model/responsive.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget {
    CustomAppBar({super.key});
+
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
    final controller=Get.put(HomeController());
+   late SharedPreferences sharedPreferences;
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initialise();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
-          if(Responsive.isTablet(context)) Spacer(),
+          if(Responsive.isTablet(context)) const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -24,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
                   letterSpacing: 2,
                   fontSize: 18
               ),),
-              Obx(() => Text(controller.name.value,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              Obx(() => Text(sharedPreferences.getString("NAME")??controller.name.value,style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
@@ -54,5 +69,9 @@ class CustomAppBar extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> initialise() async {
+     sharedPreferences=await SharedPreferences.getInstance();
   }
 }

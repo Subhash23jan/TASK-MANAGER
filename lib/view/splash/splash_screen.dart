@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SplashImage(),
+            const SplashImage(),
             const SizedBox(height: defaultPadding/1.5,),
             TweenAnimationBuilder(
                 tween: Tween(begin: 0.0,end: 1.0),

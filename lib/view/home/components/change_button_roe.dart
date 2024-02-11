@@ -13,15 +13,15 @@ class ChangeButtonRow extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width*0.06),
       child:  Row(
         children: [
-          TodayButton(),
+          const TodayButton(),
           Spacer(),
           InkWell(
               onTap: () => controller.onMoveBack(),
-              child: ChangeIconButton(icon: Icon(Icons.arrow_back_ios_rounded,color: Colors.white,size: 15,))),
-          SizedBox(width: defaultPadding/2,),
+              child: const ChangeIconButton(icon: Icon(Icons.arrow_back_ios_rounded,color: Colors.white,size: 15,))),
+          const SizedBox(width: defaultPadding/2,),
           InkWell(
               onTap: () => controller.onMoveNextPage(),
-              child: ChangeIconButton(icon: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 15,))),
+              child: const ChangeIconButton(icon: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 15,))),
         ],
       ),
     );

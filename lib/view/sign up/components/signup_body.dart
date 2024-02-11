@@ -67,7 +67,7 @@ class SignupBody extends StatelessWidget {
                         ))
                   ])),
                 )),
-            SizedBox(height: defaultPadding,)
+            const SizedBox(height: defaultPadding,)
           ],
         ),
       ),
